@@ -1,148 +1,28 @@
-package apr_12_2023_IOStream_with_exception_handling;
-
-
-class FileAlreadyExistsExceptionDemo extends Exception
-{
-	FileAlreadyExistsExceptionDemo()
-	{
-		
-	}
-	FileAlreadyExistsExceptionDemo(String msg)
-	{
-		super(msg);		
-	}
+package may_19_2023;
+/*
+ * From Java 8 onwards, 
+ * a new feature was introduced in Java 
+ * where it became possible to write 
+ *  Lambda Expression to Short the code
+ * here I am using another class Named Restaurant
+ */
+interface Hot_Drink{
+	void drink();
 }
-
-class FileNotFoundExceptionDemo extends Exception
-{
-	FileNotFoundExceptionDemo()
+class Restaurant{
+	public void createObj(Hot_Drink hd)
 	{
-		
-	}
-	FileNotFoundExceptionDemo(String msg)
-	{
-		super(msg);
+		hd.drink();
 	}
 }
 
-
-
-class CarStopped extends Exception 
-{
-    public CarStopped(String message) 
-    {
-        super(message);
-    }
-}
-
-class CarPuncture extends Exception
-{
-    public CarPuncture(String message) 
-    {
-        super(message);
-    }
-    public static void puncture(String message) throws CarPuncture
-    {
-        if (message.equals("puncture"))
-        {
-            throw new CarPuncture("Car is punctured");
-        }
-        else
-        {
-            System.out.println("Car not stalled");
-        }
-    }
-}
-
-class CarHeat extends Exception 
-{
-    public CarHeat(String message)
-    {
-        super(message);
-    }
-    public static void carHeat(int temperature) throws CarHeat 
-    {
-        if (temperature > 50) 
-        {
-            throw new CarHeat("Car is heated more than 50 degrees");
-        }
-        else
-        {
-            System.out.println("Car not stalled");
-        }
-    }
-}
-
-class CarTest
-{
-    public static void Stop(String message) throws CarStopped 
-    {
-        if (message.equals("stop"))
-        {
-            throw new CarStopped("Car stopped due to unknown reason");
-        }
-        else
-        {
-            System.out.println("Car not stalled");
-        }
-    }
-}
-
-class Main1
-{
-    public static void main(String[] args)
-    {
-        try
-        {
-            CarTest.Stop("stop");
-        }
-        catch (CarStopped e) 
-        {
-            System.out.println(e.getMessage());
-        }
-
-        try 
-        {
-            CarTest.Stop("not stop");
-        }
-        catch (CarStopped e) 
-        {
-            System.out.println(e.getMessage());
-        }
-
-        try
-        {
-            CarPuncture.puncture("puncture");
-        } 
-        catch (CarPuncture e) 
-        {
-            System.out.println(e.getMessage());
-        }
-
-        try {
-            CarPuncture.puncture("not puncture");
-        } 
-        catch (CarPuncture e) 
-        {
-            System.out.println(e.getMessage());
-        }
-
-        try 
-        {
-            CarHeat.carHeat(60);
-        } 
-        catch (CarHeat e)
-        {
-            System.out.println(e.getMessage());
-        }
-
-        try
-        {
-            CarHeat.carHeat(40);
-        }
-        catch (CarHeat e) 
-        {
-            System.out.println(e.getMessage());
-        }
-    }
+public class Main{
+	public static void main(String[] args) {
+		Hot_Drink tea=() ->System.out.println("Tea Is ready for serve");
+		Hot_Drink coffee=() ->System.out.println("Coffee Is ready for serve");
+		Restaurant r=new Restaurant();
+		r.createObj(tea);
+		System.out.println("\n.............................\n");
+		r.createObj(coffee);
+	}
 }

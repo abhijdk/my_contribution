@@ -1,90 +1,62 @@
-package apr_12_2023_IOStream_with_exception_handling;
+package may_exm2;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
+import java.util.*;
+import java.util.function.*;
 
-public class Test 
-{
-	static File file = null;
-	static String content; 
-	public static void main(String[] args) throws IOException
-	{
-		try
-		{
-			file=new File("D:\\Test\\Sir1.txt");
-			BufferedReader br=new BufferedReader(new FileReader(file));
-			if(file.exists())
-			{
-				
-				while ((content=br.readLine())!=null)
-					System.out.println(content);	
-				
-				throw new FileAlreadyExistsException(null);
-			}
-			else
-			{
-				throw new FileNotFoundException("not");
-			}
-			
-		}
-		catch(FileAlreadyExistsException e)
-		{
-			System.err.println("File is already avalable*");
-		}
-		catch(FileNotFoundException e)
-		{
-			System.err.println("File is Not Avalable**");
-		}
-		catch(Exception e)
-		{
-			System.out.println("***");
-			e.printStackTrace();
-		}
-	}
-}/**/
 
-/*
+class FindStudent {
+    private String name;
+    private int id;
+  
+    public FindStudent(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+  
+    public String getName() {
+        return name;
+    }
+  
+    public int getId() {
+        return id;
+    }
+  
+    @Override
+    public String toString() {
+        return "Name: " + name + ", ID: " + id;
+    }
+}
 
-public class Test 
-{
-	static File file = null;
-	static String content; 
-	public static void main(String[] args) throws IOException
-	{
-		try
-		{
-			file=new File("D:\\Test\\Sir1.txt");
-			BufferedReader br=new BufferedReader(new FileReader(file));
-			if(file.exists())
-			{
-				
-				while ((content=br.readLine())!=null)
-					System.out.println(content);	
-				
-				throw new FileAlreadyExistsExceptionDemo("File is Existing");
-			}
-			else
-			{
-				throw new FileNotFoundExceptionDemo("not found");
-			}
-			
-		}
-		catch(FileAlreadyExistsExceptionDemo e)
-		{
-			System.err.println("File is already avalable*");
-		}
-		catch(FileNotFoundExceptionDemo e)
-		{
-			System.out.println(e.getMessage());
-		}
-		catch(Exception e)
-		{
-			System.out.println("***");
-			e.printStackTrace();
-		}
-	}
-}/**/
+public class Test {
+    public static void main(String[] args) {
+        List<FindStudent> sList = new ArrayList<>();
+
+        sList.add(new FindStudent("Ravi", 1));
+        sList.add(new FindStudent("Prasanta", 2));
+        sList.add(new FindStudent("HK", 3));
+        sList.add(new FindStudent("Amresh", 4));
+
+        List<FindStudent> result = add(sList, student -> student.getId() % 1 == 0);
+
+        for (FindStudent student : result) {
+            System.out.println(student);
+        }
+    }
+
+//    Predicate<Integer> p=ids->ids>18;
+//	System.out.println(p.test(11));
+	
+    public static List<FindStudent> add(List<FindStudent> studentList, Predicate<FindStudent> predicate) {
+        List<FindStudent> newList = new ArrayList<>();
+
+        for (FindStudent student : studentList) {
+            if (predicate.test(student)) {
+                newList.add(student);
+            }
+        }
+
+        return newList;
+    }
+}
+
+

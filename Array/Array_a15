@@ -1,0 +1,28 @@
+package may_exm1;
+	
+	
+	import java.util.Arrays; 
+	public class Array_a15 {
+	public static void main(String[] args) 
+	    {
+	      int[] arr = {1, 2, 5, 5, 8, 9, 7, 10};
+	      int[] arr2 = {1, 0, 6, 15, 6, 4, 7, 0};
+	 
+	       System.out.println("array : "+Arrays.toString(arr));
+	       System.out.println("array2 : "+Arrays.toString(arr2));
+	 
+	      
+	        for (int i = 0; i < arr.length; i++)
+	        {
+	            for (int j = 0; j < arr2.length; j++)
+	            {
+	                if(arr[i] == (arr2[j]))
+	                {
+	                 
+	                 System.out.println("Common element is : "+(arr[i]));
+	                 }
+	            }
+	        }
+	 
+	    }
+	}

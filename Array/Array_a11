@@ -1,0 +1,19 @@
+package may_exm1;
+
+import java.util.Arrays;
+
+public class Array_a11 {
+ 
+public static void main(String[] args) {
+
+	   int[] arr = {1,2,3,4,5,6};
+	   int[] arr2=new int[arr.length];
+	   int c=0;
+	   
+	   for(int i=arr.length-1;i>-1;i--) {
+		   arr2[c]=arr[i];
+		   c++;
+	   }
+	   System.out.println(Arrays.toString(arr2));
+	}
+}
